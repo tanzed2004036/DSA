@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node{
+       int data;
+       struct node *next;
+};
+
+void traversal(struct node *ptr){
+       while(ptr!=NULL){
+       cout<<ptr->data<<" ";
+       ptr=ptr->next;
+       }
+}
+
+struct node* insert_at_first(struct node *ptr,int val){
+
+       struct node *new_ptr=(struct node*)malloc(sizeof(struct node));
+       new_ptr->data=val;
+       new_ptr->next=ptr;
+       return new_ptr;
+}
+
+int main()
+{
+       struct node *head,*second,*third;
+       head=(struct node*)malloc(sizeof(struct node));
+       second=(struct node*)malloc(sizeof(struct node));
+       third=(struct node*)malloc(sizeof(struct node));
+
+       head->data=1;
+       head->next=second;
+       second->data=2;
+       second->next=third;
+       third->data=3;
+       third->next=NULL;
+
+       traversal(head);
+       head=insert_at_first(head,55);
+       traversal(head);
+}
